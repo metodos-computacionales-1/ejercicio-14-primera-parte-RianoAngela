@@ -14,17 +14,18 @@ const double LAMBDA = 1;
 int main ()
 {
     euler(0.01, "euler.dat");
+    cout<<"Se espera que la solucion sea en terminos de seno y coseno, puesto que es un oscilador armonico ";
     return 0;
 }
 
-double derivada1(double t, double y, double x)
+double derivada1(double t, double v, double x)
 {
   return v;
 }
 
 double derivada2(double t, double v, double x)
 {
-  return (-Kx);
+  return (-K*x);
 }
 
 void euler(double DeltaT, string nombre)
@@ -46,7 +47,7 @@ void euler(double DeltaT, string nombre)
     {
         x[i] = (vx[i-1]*DeltaT)+x[i-1];
         vx[i] = (x[i-1]*DeltaT)+vx[i-1];   
-        outfile<< x[i]<<" "<<vx[i]<<" "<<<<endl;
+        outfile<< x[i]<<" "<<vx[i]<<" "<<endl;
         t=t+DeltaT;
     }
     outfile.close();
