@@ -3,44 +3,52 @@
 #include <cmath>
 using namespace std;
 
-double f0(double t, double y0, double y1); 
-double f1(double t, double y0, double y1); 
+double derivada1(double t, double y, double x); 
+double derivada2(double t, double v, double x);
 void euler(double dt, string nombre);
 
 const double K = 100;
 const double M = 2;
 const double LAMBDA = 1;
-const double DeltaT = 0.01;
 
 int main ()
 {
-    euler(DeltaT, "euler.dat");
+    euler(0.01, "euler.dat");
     return 0;
 }
 
-double f0(double t, double y0, double y1)
+double derivada1(double t, double y, double x)
 {
-  return y1;
+  return v;
 }
 
-double f1(double t, double y0, double y1)
+double derivada2(double t, double v, double x)
 {
-  return (-K/M)*pow(y0, LAMBDA);
+  return (-Kx);
 }
 
 void euler(double DeltaT, string nombre)
 {
     int pasos = 1000;
-    double x_presente[pasos],y_presente[pasos],vx_presente[pasos],vy_presente[pasos];
-    double energia[pasos];
-    
+    double x[pasos],vx[pasos];
+
     ofstream outfile;
     outfile.open(nombre);
     
     //condiciones iniciales
-    x_presente[0] = ;
-    y_presente[0] = ;
-    vx_presente[0] = ;
-    vy_presente[0] = ;
+    x[0] = 1;
+    vx[0] = 0;
+    
+    outfile<< x[0]<<" "<<vx[0]<<" "<<endl;
+    
+    double t=0.0;
+    for (int i=1;i<=20;i++)
+    {
+        x[i] = (vx[i-1]*DeltaT)+x[i-1];
+        vx[i] = (x[i-1]*DeltaT)+vx[i-1];   
+        outfile<< x[i]<<" "<<vx[i]<<" "<<<<endl;
+        t=t+DeltaT;
+    }
+    outfile.close();
     
 }
